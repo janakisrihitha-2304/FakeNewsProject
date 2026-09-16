@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+motor
+pydantic
+python-dotenv
+httpx
+# Optional - only needed once you add a labelled CSV at data/raw/dataset.csv
+# scikit-learn
+# pandas
