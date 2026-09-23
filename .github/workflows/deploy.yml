@@ -1,4 +1,4 @@
-name: Deploy Frontend to GitHub Pages
+name: Deploy FakeNewsProject Frontend
 
 on:
   push:
@@ -23,10 +23,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    defaults:
-      run:
-        working-directory: frontend
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,12 +32,14 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: FakeNewsProject/frontend/package-lock.json
 
       - name: Install dependencies
+        working-directory: FakeNewsProject/frontend
         run: npm ci
 
       - name: Build frontend
+        working-directory: FakeNewsProject/frontend
         run: npm run build
 
       - name: Setup Pages
@@ -50,7 +48,7 @@ jobs:
       - name: Upload frontend
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist
+          path: FakeNewsProject/frontend/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
