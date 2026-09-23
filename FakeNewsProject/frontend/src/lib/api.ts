@@ -1,4 +1,4 @@
-export const API = "http://localhost:8001/api";
+export const API = "https://fakenewsproject-bltn.onrender.com/api";
 
 async function req(path: string, options: RequestInit = {}) {
   const res = await fetch(API + path, {
